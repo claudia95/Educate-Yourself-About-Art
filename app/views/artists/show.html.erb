@@ -1,13 +1,16 @@
 <h2><%= @artist.name %></h2><hr>
 
+<img src="<%= @artist.image %>">
+
 <p>Gender: <%= @artist.gender.capitalize %></p>
-<p>Date of Birth: <%= @artist.birth_day %></p>
-<p>Date of Death: <%= @artist.death_day %></p>
+<p>Year of Birth: <%= @artist.birth_day %></p>
+<p>Year of Death: <%= @artist.death_day %></p>
 <p>Hometown: <%= @artist.hometown %></p>
 <p>Location: <%= @artist.location %></p>
-<p>Nationality: <%= @artist.nationality %></p>
+<p>Nationality: <%= @artist.nationality %></p><hr>
 <h4>Biography</h4>
-<p><%= @artist.biography %></p>
+<p><%= @artist.biography %></p><hr>
+
 
 
 <%= link_to 'All Artists', artists_path %><hr>
