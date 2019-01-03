@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'welcome/index'
+  # get 'users/index'
+  # get 'welcome/index'
   resources :artists do
     resources :artworks
   end
   resources :users do
     resources :lists
   end
-  root 'welcome#index'
+  root "pages#home"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
