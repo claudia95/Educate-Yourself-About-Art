@@ -1,10 +1,10 @@
-User.destroy_all
+# User.destroy_all
 List.destroy_all
 Artist.destroy_all
 
-5.times do |i|
-  User.create!(name: "Jane Doe", username: "User ##{i}", password: "secret1", bio: "A biography!")
-end
+# 5.times do |i|
+#   User.create!(name: "Jane Doe", username: "User ##{i}", password: "secret1", bio: "A biography!")
+# end
 
 5.times do |i|
   List.create(name: "List Name", description: "It's a description.")
