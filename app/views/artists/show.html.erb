@@ -1,13 +1,20 @@
-<h2><%= @artist.name %></h2><hr>
+<br>
 
-<p>Gender: <%= @artist.gender.capitalize %></p>
-<p>Date of Birth: <%= @artist.birth_day %></p>
-<p>Date of Death: <%= @artist.death_day %></p>
-<p>Hometown: <%= @artist.hometown %></p>
-<p>Location: <%= @artist.location %></p>
-<p>Nationality: <%= @artist.nationality %></p>
-<h4>Biography</h4>
-<p><%= @artist.biography %></p>
+<div id="login-container">
+      <div id="login-message"><h2><%= @artist.name %></h2></div>
 
+      <div class="artist-desc">
+        <p><strong>Gender:</strong> <%= @artist.gender.capitalize %></p>
+        <p><strong>Date of Birth:</strong> <%= @artist.birth_day %></p>
+        <p><strong>Date of Death:</strong> <%= @artist.death_day %></p>
+        <p><strong>Hometown:</strong> <%= @artist.hometown %></p>
+        <p><strong>Location:</strong> <%= @artist.location %></p>
+        <p><strong>Nationality:</strong> <%= @artist.nationality %></p>
+        
+        <!-- <h4><strong>Biography</strong></h4> -->
+        <p><%= @artist.biography %></p>
+      </div>
 
-<%= link_to 'All Artists', artists_path %><hr>
+<br>
+  <%= link_to "Browse All Artists", artists_path, class: 'login-button' %>
+  <br>
