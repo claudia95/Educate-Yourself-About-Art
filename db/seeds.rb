@@ -1,19 +1,18 @@
-User.destroy_all
 List.destroy_all
+Artwork.destroy_all
 Artist.destroy_all
 
-5.times do |i|
-  User.create!(name: "Jane Doe", username: "User ##{i}", password: "secret1", bio: "A biography!")
-end
 
 5.times do |i|
   List.create(name: "List Name", description: "It's a description.")
 end
 
 include ArtistHelper
+include ArtworksHelper
+
 api = search_for_artists
 @artists = [
-
+# remember to put comma in after basquiat
   leonardo_da_vinci = api.artist(id: 'leonardo-da-vinci'),
   pablo_picasso = api.artist(id: 'pablo-picasso'),
   andy_warhol = api.artist(id: 'andy-warhol'),
@@ -129,6 +128,44 @@ api = search_for_artists
     hometown: artist.hometown,
     location: artist.location,
     nationality: artist.nationality,
-    image: artist.thumbnail
+    image: artist._links.first[1].to_s,
   )
 end
+
+
+artist_slugs = Artist.all.map(&:slug)
+
+def arr_of_artists
+  Artist.all.map(&:name)
+end
+
+# def artist_artworks(artist_slugs)
+artist_slugs.map! do |slug|
+  {artworks: api.artworks(artist_id: slug)._embedded.artworks, artist_slug: slug}
+  end
+# end
+
+artworks = artist_slugs
+
+  artworks.each do |hash|
+    hash[:artworks].each do |artwork|
+    Artwork.create!(
+      slug: artwork.slug,
+      title: artwork.title,
+      category: artwork.category,
+      medium: artwork.medium,
+      published_date: artwork.date,
+      collecting_institution: artwork.collecting_institution,
+      image: artwork._links.first[1].to_s,
+      image_rights: artwork.image_rights,
+      artist_id: Artist.where(slug: hash[:artist_slug]).first.id
+      )
+    end
+  end
+
+
+# def artists_artworks_titles
+#   artist_slugs.map! do |slug|
+#     api.artworks(artist_id: slug)._embedded.artworks{|i| i.title}
+#   end
+# end

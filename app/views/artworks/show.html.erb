@@ -1,9 +1,13 @@
-<h1>Artworks#show</h1>
-<p>Find me in app/views/artworks/show.html.erb</p>
+<h2><%= @artwork.title %></h2><hr>
+<h3><%= @artwork.artist.name %> </h3>
 
+<img src="<%= @artwork.image %>">
+<p>Image Rights: <%= @artwork.image_rights %></p> <hr>
 
+<p>Category: <%= @artwork.category %></p>
+<p>Medium: <%= @artwork.medium %></p>
+<p>Year(s) of Creation: <%= @artwork.published_date %></p><hr>
+<p>Collecting Institution: <%= @artwork.collecting_institution %></p><hr>
 
-<%= form_tag lists_path do %>
-  <%= hidden_field_tag :artwork_id, @artwork.id %>
-  <%= submit_tag "Add this to your list" %>
-<% end %>
+<%= link_to 'All Artworks', mega_index_artworks_path %><hr>
+<%= link_to 'Check out the Artist', artist_path(@artwork.artist_id) %><hr>

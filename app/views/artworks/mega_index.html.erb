@@ -1,0 +1,11 @@
+<h2>Check out the 101 most followed Artists' Artworks on Artsy</h2>
+<%= link_to 'All Artists', artists_path %><hr>
+
+<%= @artworks.each do |artwork| %>
+  <%= link_to artist_artwork_path(artwork.artist_id, artwork.id) do %>
+    <div class="card">
+      <p><%= artwork.title %> - <%= Artist.find(artwork.artist_id).name %> </p>
+      <img src="<%= artwork.image %>">
+    </div>
+    <% end %>
+<% end %>

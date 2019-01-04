@@ -7,10 +7,9 @@
 <p>Year of Death: <%= @artist.death_day %></p>
 <p>Hometown: <%= @artist.hometown %></p>
 <p>Location: <%= @artist.location %></p>
-<p>Nationality: <%= @artist.nationality %></p><hr>
-<h4>Biography</h4>
-<p><%= @artist.biography %></p><hr>
+<p>Nationality: <%= @artist.nationality %></p>
+<p><%= @artist.biography %></p> <hr>
 
 
-
+<%= link_to 'Artworks by this Artist', artist_artworks_path(@artist) %>
 <%= link_to 'All Artists', artists_path %><hr>

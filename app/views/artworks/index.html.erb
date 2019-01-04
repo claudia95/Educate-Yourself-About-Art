@@ -1,2 +1,14 @@
-<h1>Artworks#index</h1>
-<p>Find me in app/views/artworks/index.html.erb</p>
+
+<% @artworks.each do |artwork| %>
+  <%= link_to artist_artwork_path(artwork.artist_id, artwork.id) do %>
+    <div class="card">
+      <h4><%= artwork.title %></h4>
+      <h2><%= artwork.medium %>  </h2>
+      <img src="<%= artwork.image %>">
+    <% end %>
+    </div>
+  <br>
+<% end %>
+
+
+<%= link_to 'All Artworks', mega_index_artworks_path %><hr>

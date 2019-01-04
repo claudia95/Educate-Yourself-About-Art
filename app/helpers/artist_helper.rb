@@ -1,5 +1,4 @@
 module ArtistHelper
-
   def search_for_artists
     require 'hyperclient'
 
