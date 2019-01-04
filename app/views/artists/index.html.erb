@@ -1,5 +1,7 @@
 <h2>Check out the 101 most followed Artists on Artsy</h2>
 
+<%= link_to 'All Artworks', mega_index_artworks_path %><hr>
+
 <% @artists.each do |artist| %>
   <%= link_to artist_path(artist.id) do %>
     <div class="card">
